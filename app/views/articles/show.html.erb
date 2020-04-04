@@ -1,6 +1,7 @@
-<h1 class="text-center my-4">Article Nr. <%= @article.id %></h1>
-
-<div class="card mx-auto w-100 my-5" style="width: 18rem;">
+<h1 class="text-center mt-4 mb-1">Article Nr. <%= @article.id %></h1>
+<span class="badge badge-pill badge-warning mt-4 mr-4 p-2">created <%= time_ago_in_words(@article.created_at) %> ago - <%= @article.created_at %></span>
+      <span class="badge badge-pill badge-secondary mt-4 p-2">last updated <%= time_ago_in_words(@article.updated_at) %> ago - <%= @article.updated_at %></span>
+<div class="card mx-auto w-100 my-3" style="width: 18rem;">
     <div class="card-body">
       <h3 class="card-title"><%= @article.title %></h3>
       <p class="card-text"><%= @article.description %></p>
@@ -8,4 +9,4 @@
       <%= link_to "Delete", article_path(@article), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
     </div>
   </div>
-<%= link_to "BACK TO ALL ARTICLES", articles_path, class: "btn btn-primary" %>
+<%= link_to raw("&#8592"), articles_path, class: "btn btn-primary p-2 px-3" %>
