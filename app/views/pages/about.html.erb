@@ -1,3 +1,36 @@
-<h1>This is about</h1>
-
-<%= link_to image_tag('profilbild.png'), 'www.pascalmayr.com' %>
+<div class="container mt-4">
+    <div class="span3 well">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        
+        <div class="modal-body">
+            <center>
+            <%= image_tag('profilbild.png', class: "img-circle", width: "140", height: "140") %></a>
+            <h3 class="media-heading mt-4">Pascal Mayr</h3>
+                <p>
+                ITALY
+                </p>
+                <span class="badge badge-primary">HTML5/CSS</span>
+                <span class="badge badge-secondary">Ruby on Rails</span>
+                <span class="badge badge-success">ReactJS</span>
+                <span class="badge badge-warning">PHP</span>
+                <span class="badge badge-danger">Git</span>
+            </center>
+            <hr>
+            <center>
+            <p class="text-center">
+            I like to solve specific problems to improve productivity</p>
+            <p>
+              Check out my <a href="https://stackoverflow.com/story/pascalmayr">stackoverflow story</a>
+            </p>
+            <br>
+            </center>
+        </div>
+        <div class="text-center mb-4">
+            <%= link_to "I've seen enough about Pascal", root_url , class: "btn btn-primary" %>
+        </div>
+    </div>
+</div>
+		</center>
+    </div>
+</div>

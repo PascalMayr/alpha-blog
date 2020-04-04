@@ -1,12 +1,11 @@
-<h1>You just created this article</h1>
+<h1 class="text-center my-4">Article Nr. <%= @article.id %></h1>
 
-<p>Title:</p>
-<%= @article.title %>
-<br />
-<p>Description:</p>
-<%= @article.description %>
-<p></p>
-<br />
-<%= link_to "link to edit this article", edit_article_path(@article) %>
-<br />
-<%= link_to "back to articles listing", articles_path %>
+<div class="card mx-auto w-100 my-5" style="width: 18rem;">
+    <div class="card-body">
+      <h3 class="card-title"><%= @article.title %></h3>
+      <p class="card-text"><%= @article.description %></p>
+      <%= link_to "Edit", edit_article_path(@article), class: "btn btn-primary" %>
+      <%= link_to "Delete", article_path(@article), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
+    </div>
+  </div>
+<%= link_to "BACK TO ALL ARTICLES", articles_path, class: "btn btn-primary" %>
