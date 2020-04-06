@@ -1,12 +1,12 @@
-<h1 class="text-center mt-4 mb-1">Article Nr. <%= @article.id %></h1>
-<span class="badge badge-pill badge-warning mt-4 mr-4 p-2">created <%= time_ago_in_words(@article.created_at) %> ago - <%= @article.created_at %></span>
-      <span class="badge badge-pill badge-secondary mt-4 p-2">last updated <%= time_ago_in_words(@article.updated_at) %> ago - <%= @article.updated_at %></span>
-<div class="card mx-auto w-100 my-3" style="width: 18rem;">
-    <div class="card-body">
-      <h3 class="card-title"><%= @article.title %></h3>
-      <p class="card-text"><%= @article.description %></p>
-      <%= link_to "Edit", edit_article_path(@article), class: "btn btn-primary" %>
-      <%= link_to "Delete", article_path(@article), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
-    </div>
+<h1 class="text-center mt-4 mb-1"><%= @article.title %></h1>
+<div class="card mx-auto w-100 mt-3" style="width: 18rem;">
+  <div class="card-body">
+    <p class="card-text"><%= @article.description %></p>
+    <hr>
+    <%= link_to "Edit", edit_article_path(@article), class: "btn btn-primary" %>
+    <%= link_to "Delete", article_path(@article), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
   </div>
-<%= link_to raw("&#8592"), root_url, class: "btn btn-primary p-2 px-3" %>
+</div>
+<span class="badge badge-pill badge-warning mt-2 mr-4 p-2">created <%= time_ago_in_words(@article.created_at) %> ago - <%= @article.created_at %></span>
+<span class="badge badge-pill badge-secondary mt-3 p-2">last updated <%= time_ago_in_words(@article.updated_at) %> ago - <%= @article.updated_at %></span><br />
+<%= link_to raw("&#8592"), root_url, class: "btn btn-primary p-2 px-3 mt-3" %>
