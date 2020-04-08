@@ -1,0 +1,29 @@
+<div class="container mt-4">
+    <div class="span3 well">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-body">
+            <center>
+            <%= gravatar_for @user, size: 140 %>
+            <h3 class="media-heading mt-4"><%= @user.username %></h3>
+            </center>
+            <hr>
+            <center>
+            <p class="text-center">
+            I like to solve specific problems to improve productivity</p>
+            <p>
+              Check out my <a href="https://stackoverflow.com/story/pascalmayr">stackoverflow story</a>
+            </p>
+            <br>
+            </center>
+        </div>
+        <div class="text-center mb-4">
+            <%= link_to "I've seen enough about #{@user.username}", root_url , class: "btn btn-primary" %>
+        </div>
+    </div>
+</div>
+		</center>
+    </div>
+</div>
+<h3 class="my-3">Articles by <%= @user.username %>:</h3>
+<%= render 'articles/article', obj: @user.articles %>

@@ -1,17 +1,5 @@
 <div class="mt-4">  
-  <% @article.each do |article| %>
-  <div class="card mx-auto w-100 mb-3" style="width: 18rem;">
-    <div class="card-body">
-      <h3 class="card-title"><%= article.title %></h3>
-      <p class="card-text"><%= truncate(article.description, length: 500) %></p>
-      <%= link_to "Edit", edit_article_path(article), class: "btn btn-primary" %>
-      <%= link_to "Show", article_path(article), class: "btn btn-primary" %>
-      <%= link_to "Delete", article_path(article), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger mr-4" %>
-      <span class="badge badge-pill badge-warning mt-4 mr-4 p-2">created <%= time_ago_in_words(article.created_at) %> ago - <%= article.created_at %></span>
-      <span class="badge badge-pill badge-secondary mt-4 p-2">last updated <%= time_ago_in_words(article.updated_at) %> ago - <%= article.updated_at %></span>
-    </div>
-  </div>
-  <% end %>
+  <%= render 'article', obj: @article %>
 <nav>
   <ul class="pagination text-center">
     <li class="page-item"><a class="page-link" href="#">Previous</a></li>
