@@ -7,6 +7,6 @@
     <%= link_to "Delete", article_path(@article), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger mr-3" %>
   </div>
 </div>
-<span class="badge badge-pill badge-warning mt-2 mr-4 p-2">created <%= time_ago_in_words(@article.created_at) %> ago - <%= @article.created_at %> - by <span class="text-danger"><%= @article.user.username if @article.user %></span></span>
+<span class="badge badge-pill badge-warning mt-2 mr-4 p-2">created <%= time_ago_in_words(@article.created_at) %> ago - <%= @article.created_at %><% if @article.user %> - by <span><%= link_to @article.user.username, user_path(@article.user) %></span><% end %></span>
 <span class="badge badge-pill badge-secondary mt-3 p-2">last updated <%= time_ago_in_words(@article.updated_at) %> ago - <%= @article.updated_at %></span><br />
 <%= link_to raw("&#8592"), root_url, class: "btn btn-primary p-2 px-3 mt-3" %>

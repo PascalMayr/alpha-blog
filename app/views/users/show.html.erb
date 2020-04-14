@@ -6,24 +6,26 @@
             <center>
             <%= gravatar_for @user, size: 140 %>
             <h3 class="media-heading mt-4"><%= @user.username %></h3>
+            <h3 class="media-heading mt-4"><%= mail_to @user.email %></h3>
             </center>
             <hr>
-            <center>
-            <p class="text-center">
-            I like to solve specific problems to improve productivity</p>
-            <p>
-              Check out my <a href="https://stackoverflow.com/story/pascalmayr">stackoverflow story</a>
-            </p>
-            <br>
-            </center>
-        </div>
-        <div class="text-center mb-4">
-            <%= link_to "I've seen enough about #{@user.username}", root_url , class: "btn btn-primary" %>
+            <div class="text-center">
+            <%= link_to "Edit profile", edit_user_path(@user), class: "btn btn-primary my-2 mx-1" %>
+            <%= link_to "Delete user", user_path(@user), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger my-2 mx-1" %></td>
+            </div>
         </div>
     </div>
 </div>
+<div class="text-center mb-4">
+            <%= link_to "I've seen enough about #{@user.username}", root_url , class: "btn btn-primary" %>
+        </div>
 		</center>
     </div>
 </div>
-<h3 class="my-3">Articles by <%= @user.username %>:</h3>
-<%= render 'articles/article', obj: @user.articles %>
+<% if @user_articles.any? %>
+  <h3 class="my-3">Articles by <%= @user.username %>:</h3>
+  <%= render 'articles/article', obj: @user_articles %>
+<% end %>
+<nav>
+  <%= will_paginate @user_articles, params: @will_paginate_params, class: 'text-center' %>
+</nav>

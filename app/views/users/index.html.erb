@@ -1,0 +1,32 @@
+<h1 class="text-center my-4">All Users in Alpha Blog</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Image</th>
+      <th scope="col">Username</th>
+      <th scope="col">Email</th>
+      <th scope="col">Articles</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @users.each do |user| %>
+    <tr>
+      <th scope="row"><%= user.id %></th>
+      <td scope="row"><%= gravatar_for user, size: 60 %></td>
+      <td scope="row"><%= user.username %></%=>
+      <td scope="row"><%= mail_to user.email %></td>
+      <td scope="row"><%= pluralize(user.articles.count, "article") %></td>
+      <td scope="row">
+      <%= link_to "View profile", user_path(user), class: "btn btn-primary my-2 mx-1" %>
+      <%= link_to "Edit profile", edit_user_path(user), class: "btn btn-primary my-2 mx-1" %>
+      <%= link_to "Delete user", user_path(user), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger my-2 mx-1" %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<nav>
+  <%= will_paginate @article, params: @will_paginate_params, class: 'text-center' %>
+</nav>
