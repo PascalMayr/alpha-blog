@@ -4,22 +4,35 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+    <% if !logged_in? %>
       <li>
       <%= link_to "Sign up", signup_path, class: "nav-link btn btn-primary mr-lg-3 mt-3 mt-lg-0 px-3 text-white" %>
       </li>
       <li>
-        <%= link_to "Log in", "#", class: "nav-link btn btn-warning mr-lg-3 mt-3 mt-lg-0 px-3" %>
+        <%= link_to "Log in", login_path, class: "nav-link btn btn-warning mr-lg-3 mt-3 mt-lg-0 px-3" %>
+      </li>
+    <% else %>
+      <li>
+        <%= link_to "Log out", logout_path, method: :delete, class: "nav-link btn btn-warning mr-lg-3 mt-3 mt-lg-0 px-3" %>
       </li>
       <li>
         <%= link_to "Create new article", new_article_path, class: "nav-link btn btn-secondary text-white mr-lg-3 mt-3 mt-lg-0 px-3" %>
       </li>
+      <li>
+        <%= link_to "My profile", user_path(current_user), class: "nav-link btn btn-success text-white mr-lg-3 mt-3 mt-lg-0 px-3 mb-3 d-lg-none d-xl-none d-sm-block d-block" %>
+      </li>
     </ul>
+    <a href="<%= user_path(current_user) %>">
+      <div><%= gravatar_for current_user, size: 40, class: "rounded-circle d-lg-block d-xl-block d-sm-none d-none" %></div>
+    </a>
+    <% end %>
+    <!--
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-warning text-white my-2 my-sm-0" type="submit">Search</button>
     </form>
+    -->
   </div>
 </nav>

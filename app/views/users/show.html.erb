@@ -8,11 +8,13 @@
             <h3 class="media-heading mt-4"><%= @user.username %></h3>
             <h3 class="media-heading mt-4"><%= mail_to @user.email %></h3>
             </center>
+            <% if current_user == @user %>
             <hr>
             <div class="text-center">
-            <%= link_to "Edit profile", edit_user_path(@user), class: "btn btn-primary my-2 mx-1" %>
-            <%= link_to "Delete user", user_path(@user), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger my-2 mx-1" %></td>
+              <%= link_to "Edit profile", edit_user_path(@user), class: "btn btn-primary my-2 mx-1" %>
+              <%= link_to "Delete user", user_path(@user), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger my-2 mx-1" %></td>
             </div>
+            <% end %>
         </div>
     </div>
 </div>
