@@ -37,8 +37,8 @@ class UsersController < ApplicationController
   end
   def destroy
     @user.destroy
-    redirect_to logout_path
     flash[:notice] = "User #{@user.username} and all his artticles was succesfully deleted"
+    redirect_to root_path
   end
   private
   def user_params
