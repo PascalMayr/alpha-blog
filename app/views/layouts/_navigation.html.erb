@@ -14,15 +14,21 @@
         <%= link_to "Log in", login_path, class: "nav-link btn btn-warning mr-lg-3 mt-3 mt-lg-0 px-3" %>
       </li>
     <% else %>
+    <% if current_user.admin? %>
       <li>
-        <%= link_to "Log out", logout_path, method: :delete, class: "nav-link btn btn-warning mr-lg-3 mt-3 mt-lg-0 px-3" %>
+        <%= link_to "Manage Users", users_path , class: "nav-link btn btn-primary mr-lg-3 mt-3 mt-lg-0 px-3 text-white" %>
       </li>
+    <% end %>
       <li>
         <%= link_to "Create new article", new_article_path, class: "nav-link btn btn-secondary text-white mr-lg-3 mt-3 mt-lg-0 px-3" %>
       </li>
       <li>
-        <%= link_to "My profile", user_path(current_user), class: "nav-link btn btn-success text-white mr-lg-3 mt-3 mt-lg-0 px-3 mb-3 d-lg-none d-xl-none d-sm-block d-block" %>
+        <%= link_to "My profile", user_path(current_user), class: "nav-link btn btn-success text-white mr-lg-3 mt-3 mt-lg-0 px-3 d-lg-none d-xl-none d-sm-block d-block" %>
       </li>
+      <li>
+        <%= link_to "Log out", logout_path, method: :delete, class: "nav-link btn btn-warning mr-lg-3 mt-3 mt-lg-0 px-3" %>
+      </li>
+      
     </ul>
     <a href="<%= user_path(current_user) %>">
       <div><%= gravatar_for current_user, size: 40, class: "rounded-circle d-lg-block d-xl-block d-sm-none d-none" %></div>

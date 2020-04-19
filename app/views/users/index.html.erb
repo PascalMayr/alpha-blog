@@ -20,7 +20,7 @@
       <td scope="row"><%= pluralize(user.articles.count, "article") %></td>
       <td scope="row">
       <%= link_to "View profile", user_path(user), class: "btn btn-primary my-2 mx-1" %>
-      <% if logged_in? && current_user == user %>
+      <% if (logged_in? && current_user.admin?) || (logged_in? && current_user == user)  %>
         <%= link_to "Edit profile", edit_user_path(user), class: "btn btn-primary my-2 mx-1" %>
         <%= link_to "Delete user", user_path(user), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger my-2 mx-1" %></td>
       <% end %>

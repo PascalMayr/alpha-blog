@@ -2,9 +2,11 @@
 <div class="card mx-auto w-100 mt-3" style="width: 18rem;">
   <div class="card-body">
     <p class="card-text"><%= @article.description %></p>
+    <% if logged_in? %>
     <hr>
-    <%= link_to "Edit", edit_article_path(@article), class: "btn btn-primary" %>
-    <%= link_to "Delete", article_path(@article), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger mr-3" %>
+      <%= link_to "Edit", edit_article_path(@article), class: "btn btn-primary" %>
+      <%= link_to "Delete", article_path(@article), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger mr-3" %>
+    <% end %>
   </div>
 </div>
 <span class="badge badge-pill badge-warning mt-2 mr-4 p-2">created <%= time_ago_in_words(@article.created_at) %> ago - <%= @article.created_at %><% if @article.user %> - by <span><%= link_to @article.user.username, user_path(@article.user) %></span><% end %></span>
